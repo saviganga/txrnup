@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/gofiber/fiber/v2"
@@ -14,6 +13,7 @@ func welcome(c *fiber.Ctx) error {
 
 func init() {
 	initialisers.LoadEnv()
+	initialisers.ConnectDb()
 }
 
 func main() {
@@ -23,7 +23,7 @@ func main() {
 	app := fiber.New()
 
 	app.Get("/", welcome)
-	fmt.Println(port)
+	// fmt.Println(port)
 
 	app.Listen(":" + port)
 }
