@@ -5,11 +5,9 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/saviganga/txrnup/initialisers"
+	"github.com/saviganga/txrnup/routes/home"
 )
 
-func welcome(c *fiber.Ctx) error {
-	return c.SendString("Hello, Ganga! Welcome to Go programming language.")
-}
 
 func init() {
 	initialisers.LoadEnv()
@@ -22,8 +20,8 @@ func main() {
 
 	app := fiber.New()
 
-	app.Get("/", welcome)
-	// fmt.Println(port)
+	home.WelcomeRoute(app)
+
 
 	app.Listen(":" + port)
 }

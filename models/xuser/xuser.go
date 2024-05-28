@@ -1,4 +1,4 @@
-package models
+package xuser
 
 import (
 	"time"
