@@ -15,14 +15,11 @@ func CreateUsers(c *fiber.Ctx) error {
 	fmt.Println(len(user.Email))
 	err := c.BodyParser(user)
 	err = db.Create(&user).Error
-	// newAdmin, err := utils.TypeConverter[AdminResponse](&admin)
 
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{
 			"message": err.Error(),
 		})
 	}
-	// respMessage := "Successfully created new admin profile"
-	// return responses.CreatedResponse(ctx, newAdmin, respMessage)
 	return c.Status(200).JSON(user)
 }
