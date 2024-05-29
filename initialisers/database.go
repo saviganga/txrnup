@@ -16,7 +16,7 @@ type Dbinstance struct {
 
 var DB Dbinstance
 
-func ConnectDb() {
+func ConnectDb() Dbinstance {
 
 	dsn := fmt.Sprintf(
 		"host=db user=%s password=%s dbname=%s port=5432 sslmode=disable",
@@ -41,8 +41,10 @@ func ConnectDb() {
 	// log.Println("running migrations")
 	// db.AutoMigrate(&xuser.Xuser{})
 
-	DB = Dbinstance{
+	DB := Dbinstance{
 		Db: db,
 	}
+
+	return DB
 
 }
